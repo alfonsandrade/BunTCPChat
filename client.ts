@@ -43,7 +43,7 @@ const BunSocket = Bun.connect({
                     console.error('File hash mismatch!');
                     return;
                 }
-                const newPath = `${date.toISOString()}_${fileName}`;
+                const newPath = `${date.toISOString()}_client_${fileName}`;
                 fs.writeFileSync(newPath, Buffer.from(fileData, 'hex'));
                 console.log(`Received and saved file: ${newPath}`);                
                 

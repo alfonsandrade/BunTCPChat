@@ -24,7 +24,9 @@ Bun.listen({
                 return;
             }
             const sessionId = Date.now().toString(36);
-            console.log(`${date}[${sessionId}]: ${decodedMessage}`);
+            for (let clientSocket of clients.values()) {
+                clientSocket.write(`${date}[${sessionId}]: ${decodedMessage}`);
+            }
         },
         open(socket) {
             const sessionId = Date.now().toString(36);
